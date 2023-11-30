@@ -1,0 +1,96 @@
+@import "../../css-config/mixins.scss";
+
+.profile {
+  margin: 0 auto;
+ 
+
+  .profile-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    // Set the height to 100vw
+
+    @include md {
+      flex-direction: row;
+      
+    }
+
+    .profile-picture {
+      border-radius: 50%;
+      margin-bottom: 20px; // Add space between picture and details
+      width: 100px;
+      height: 100px;
+
+      @include md {
+        margin-bottom: 0; // Reset margin for larger screens
+        margin-right: 20px;
+      }
+    }
+
+    .profile-details {
+      text-align: center; // Center text on small screens
+
+      @include md {
+        text-align: left; // Align text to the left on larger screens
+      }
+
+      h2 {
+        margin-bottom: 8px;
+      }
+
+      p {
+        color: #555;
+      }
+
+      /* Additional styling for user details */
+    }
+
+    .logout-button {
+      background-color: #e74c3c;
+      color: #fff;
+      border: none;
+      padding: 10px 15px;
+      border-radius: 4px;
+      cursor: pointer;
+      margin-top: 20px; // Add margin-top to create space
+
+      &:hover {
+        background-color: #c0392b;
+      }
+
+      @include md {
+        margin-top: 0; // Reset margin for larger screens
+        margin-left: auto; // Push the button to the right on larger screens
+      }
+    }
+  }
+
+  .buttons {
+    margin: 5px;
+    display: flex;
+    flex-direction: column;
+
+    @include md {
+      margin: 10px;
+    }
+
+    span {
+      cursor: pointer;
+      padding: 5px;
+      margin: 5px;
+      border: 1px solid #ddd;
+      border-radius: 8px;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+
+      @include md {
+        padding: 10px;
+        margin: 10px;
+      }
+    }
+  }
+
+}

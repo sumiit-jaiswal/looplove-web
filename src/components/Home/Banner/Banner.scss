@@ -1,0 +1,201 @@
+@import "../../../css-config/mixins.scss";
+
+.hero-banner {
+  padding: 40px 0;
+  position: relative;
+  background-image: linear-gradient(to right, rgb(131, 16, 106), #e0004b);
+
+  @include md {
+    height: calc(100vh - 80px);
+  }
+
+  .content {
+    height: 100%;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    flex-direction: column-reverse;
+    max-width: calc(100% - 20px);
+    margin: 0 auto;
+
+    @include md {
+      flex-direction: row;
+      max-width: 1200px;
+    }
+
+    .arrow-back,
+    .arrow-next {
+      position: absolute;
+      bottom: 0;
+      background-color: white;
+      z-index: 10;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+
+      &:hover {
+        opacity: 0.9;
+      }
+
+      &.arrow-back {
+        right: 31px;
+        width: 30px;
+        height: 30px;
+        z-index: 11;
+        @media (min-width: 768px) {
+          right: 51px;
+          width: 50px;
+          height: 50px;
+        }
+      }
+
+      &.arrow-next {
+        right: 0;
+        width: 30px;
+        height: 30px;
+        z-index: 11;
+        @media (min-width: 768px) {
+          width: 50px;
+          height: 50px;
+        }
+      }
+
+      .arrow-back-icon,
+      .arrow-next-icon {
+        font-size: 1rem;
+        z-index: 11;
+        @media (min-width: 768px) {
+          font-size: 1.5rem;
+        }
+      }
+
+      &.arrow-next {
+        .arrow-next-icon {
+          transform: rotate(180deg);
+        }
+      }
+    }
+
+    .banner-img {
+      position: relative;
+      z-index: 8;
+      width: 100%;
+      flex-shrink: 0;
+      overflow: hidden;
+      margin: 10px;
+      cursor: pointer;
+      @include md {
+        max-width: 50%;
+        height: 100%;
+        display: flex;
+        justify-content: center; /* Center horizontally */
+        align-items: center; /* Center vertically */
+      }
+
+      img {
+        height: 100%;
+        width: 100%;
+        object-fit: contain;
+      }
+    }
+
+    // ... (your existing styles)
+
+    .text-content {
+      margin-top: 10px;
+      color: white;
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+
+      @include md {
+        margin-top: 0;
+        position: relative;
+      }
+
+      @include xxl {
+        left: 0;
+      }
+
+      .banner-heading {
+        font-size: 40px;
+        font-weight: 700;
+        line-height: 1;
+        color: white;
+        margin-bottom: 20px;
+
+        @include md {
+          font-size: 100px;
+        }
+      }
+
+      p {
+        max-width: 300px;
+        font-size: 20px;
+        line-height: 20px;
+        margin-bottom: 20px;
+
+        @include md {
+          max-width: 500px;
+          font-size: 25px;
+          line-height: 24px;
+          margin-bottom: 40px;
+        }
+      }
+
+      .ctas {
+        display: flex;
+        justify-content: center;
+        gap: 20px;
+
+        .banner-cta {
+          text-transform: uppercase;
+          font-size: 20px;
+          font-weight: bold;
+          width: fit-content;
+          border: 2px solid grey;
+          padding: 10px 20px;
+          transition: all ease 0.3s;
+          cursor: pointer;
+
+          &.v2 {
+            background-color: white;
+            color: black;
+          }
+
+          &:hover {
+            opacity: 0.6;
+          }
+        }
+      }
+    }
+
+    // ... (your existing styles)
+
+.carousel-text {
+  text-align: center;
+  color: white;
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 11;
+  width: 100%;
+  background-color: rgba(0, 0, 0, 0.3); /* Adjust the alpha value for the desired transparency */
+  padding: 10px; /* Adjust padding as needed for spacing */
+
+  .carousel-title {
+    font-size: 25px;
+    font-weight: 700;
+    margin-bottom: 5px;
+  }
+
+  .carousel-price {
+    font-size: 20px;
+  }
+}
+
+  }
+}

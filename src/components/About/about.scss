@@ -1,0 +1,68 @@
+// Import mixins and other styles
+@import "../../css-config/mixins.scss";
+
+$primary-color: #3498db;
+$secondary-color: #e74c3c;
+$border-radius: 1000px;
+$box-shadow: 0 0 15px rgba(0, 0, 0, 1);
+
+.container {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 20px;
+
+  .divider {
+    margin: 20px 0;
+    height: 1px;
+    width: 100%;
+    background-color: rgba(0, 0, 0, 0.1);
+  }
+
+  .section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    margin-bottom: 40px;
+
+    &:nth-child(even) {
+      flex-direction: column-reverse;
+    }
+
+    .section-content {
+      padding: 20px;
+      border-radius: $border-radius;
+      margin: 20px 0;
+
+      h2 {
+        background-color: #B47EDE;
+        padding: 5px;
+        font-size: 24px;
+        margin-bottom: 10px;
+      }
+
+      p {
+        font-size: 16px;
+        line-height: 1.5;
+      }
+    }
+
+    .section-image {
+      margin-bottom: 20px;
+
+      .img-data{
+        display: block;
+        font-size: large;
+        font-weight: bold;
+      }
+
+      img {
+        max-width: 100%;
+        border-radius: $border-radius;
+        box-shadow: $box-shadow;
+        max-height: 200px;
+        object-fit: cover;
+      }
+    }
+  }
+}
