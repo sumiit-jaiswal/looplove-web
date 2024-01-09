@@ -1,0 +1,45 @@
+@import "../../../css-config/mixins.scss";
+.privacy-policy-container {
+  max-width: 960px;
+  margin: 0 auto;
+  padding: 2rem;
+  font-family: sans-serif;
+
+  @media (max-width: 768px) {
+    padding: 1rem;
+  }
+}
+
+.privacy-policy-header {
+  h1{
+    margin: 1rem;
+  }
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.privacy-policy-content {
+  line-height: 1.6;
+
+  h2 {
+    font-size: 1.5rem;
+    margin-top: 2rem;
+  }
+
+  p {
+    margin-bottom: 1rem;
+  }
+
+  ul {
+    list-style: disc;
+    margin-left: 2rem;
+  }
+
+  li {
+    margin-bottom: 0.5rem;
+  }
+
+  .subsection {
+    margin-top: 1rem;
+  }
+}

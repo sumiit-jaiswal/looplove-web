@@ -56,9 +56,9 @@ const SingleProduct = () => {
     }
   };
 
+  
 
-
- 
+  
 
   return (
     <>
@@ -73,7 +73,7 @@ const SingleProduct = () => {
                 thumbwidth={60}
                 className="productCarousel"
               >
-                {carouselimg?.data.map((item) => (
+                {carouselimg?.data?.map((item) => (
                   <img
                     key={item.id}
                     src={
@@ -143,7 +143,7 @@ const SingleProduct = () => {
           </div>
           <RelatedProducts
             productId={id}
-            categoryId={product?.categories?.data?.[0].id}
+            categoryId={product?.categories?.data?.[0]?.id}
           />
         </div>
       </div>

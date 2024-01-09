@@ -20,13 +20,13 @@ const Category = ({ categories, innerCat,  catHeadingText}) => {
               <img
                 src={
                   process.env.REACT_APP_LOOPLOVE_URL +
-                  item.attributes.img.data.attributes.url
+                  item?.attributes?.img?.data?.attributes?.url
                 }
                 alt=""
               />
             </div>
 
-            <span className="cat-title">{item.attributes.title}</span>
+            <span className="cat-title">{item?.attributes?.title}</span>
           </div>
         ))}
       </div>

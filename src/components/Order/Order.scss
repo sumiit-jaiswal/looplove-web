@@ -1,0 +1,110 @@
+// Order.scss
+
+.order-container {
+    max-width: 800px;
+    margin: 20px auto;
+  
+    h2 {
+        text-align: center;
+      font-size: 24px;
+      margin-bottom: 30px;
+      color: #333;
+    }
+  
+    .no-order {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+      font-size: 20px;
+      color: #555;
+      margin-bottom: 20px;
+      p{
+        margin: 20px 0px;
+      }
+      .back-link{
+
+          cursor: pointer;
+      }
+  
+      
+    }
+  
+    .orders-list {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+  
+    .order-item {
+      border: 1px solid #ddd;
+      padding: 20px;
+      margin-bottom: 20px;
+      background-color: #fff;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+      border-radius: 8px;
+      transition: transform 0.2s ease-in-out;
+  
+      &:hover {
+        transform: translateY(-4px);
+      }
+  
+      h3 {
+        font-size: 20px;
+        margin-bottom: 10px;
+        color: #333;
+      }
+  
+      .products-list {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+        display: flex;
+        flex-wrap: wrap;
+  
+        .product-item {
+          flex: 0 0 calc(50% - 20px);
+          margin-right: 20px;
+          margin-bottom: 20px;
+  
+          @media (max-width: 768px) {
+            flex: 0 0 100%;
+            margin-right: 0;
+          }
+  
+          .product-photo {
+            width: 100%;
+            border-radius: 8px;
+          }
+  
+          .product-name {
+            font-size: 16px;
+            margin-top: 10px;
+            color: #555;
+          }
+        }
+      }
+  
+      .delivery-info {
+        margin-top: 20px;
+  
+        .delivery-status {
+          font-size: 16px;
+          color: #28a745; /* Green color for success */
+        }
+  
+        .tracking-link {
+          display: block;
+          font-size: 14px;
+          color: #007bff;
+          text-decoration: underline;
+          margin-top: 10px;
+  
+          &:hover {
+            color: #0056b3;
+          }
+        }
+      }
+    }
+  }
+  

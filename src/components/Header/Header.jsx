@@ -1,5 +1,5 @@
 import { useEffect, useState, useContext } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate,useLocation  } from "react-router-dom";
 import { TbSearch } from "react-icons/tb";
 import { CgShoppingCart } from "react-icons/cg";
 import { AiOutlineHeart } from "react-icons/ai";
@@ -16,6 +16,9 @@ const Header = () => {
   const [showCart, setShowCart] = useState(false);
   const [showSearch, setShowSearch] = useState(false);
   const { cartCount } = useContext(Context);
+
+  const { pathname } = useLocation();
+  const isCheckoutPage = pathname.includes("/checkout");
 
   const handlescroll = () => {
     const offset = window.scrollY;
@@ -41,6 +44,7 @@ const Header = () => {
     return user.picture;
 
   };
+  console.log("information",user?.picture,user?.name,user?.given_name);
 
   return (
     <>
@@ -63,17 +67,16 @@ const Header = () => {
             {/* <span className="wishlist-icon" >
             <AiOutlineHeart /><span>4</span>
             </span> */}
-            <span className="cart-icon" onClick={() => setShowCart(true)}>
-              <CgShoppingCart />
+            {!isCheckoutPage && <span className="cart-icon" onClick={() => setShowCart(true)}>
+              {<CgShoppingCart />}
               {!!cartCount && <span>{cartCount}</span>}
-            </span>
+            </span>}
             {!isAuthenticated && <div className="loginout login heart"  onClick={() => loginWithRedirect()}>
               <span>Login</span>
             </div>}
 
             {isAuthenticated && <div className="loginout profile"  onClick={() => navigate("/profile")}>
             {isImg && <img src={user.picture} alt="" className="profile-picture" />}
-            {!isImg && <span>{user.given_name}</span>}
             </div>}
 
           </div>

@@ -2,8 +2,8 @@
 import { Context } from './utils/context';
 import React, { useEffect, useState, useContext, useRef } from 'react';
 import { useAuth0 } from '@auth0/auth0-react';
-import CartItem from './components/Cart/CartItem/CartItem';
 import axios from 'axios';
+import { fetchDataApi, fetchCartDetailsApi } from './utils/api';
 const Layout = ({ children }) => {
 
   console.log('start');
@@ -20,8 +20,7 @@ const Layout = ({ children }) => {
   const fetchData = async (subtoken) => {
     try {
       console.log('Fetching data for subtoken:', subtoken);
-      const response = await axios.post(
-        process.env.REACT_APP_LOOPLOVE_URL + `/api/authusers/findauthser`,
+      const response = await fetchDataApi.post( "/api/authusers/findauthser",
         {
           subtoken,
         }
@@ -39,8 +38,7 @@ const Layout = ({ children }) => {
 
   const fetchCartDetails = async (authUserId) => {
     try {
-      const response = await axios.get(
-        process.env.REACT_APP_LOOPLOVE_URL + `/api/authusers/findcart/${authUserId}`
+      const response = await fetchCartDetailsApi.get( `/api/authusers/findcart/${authUserId}`
       );
 
       const receivedAuthUserDetails = response.data.cartDetails;
@@ -66,8 +64,7 @@ const Layout = ({ children }) => {
           const prodid = cartItem.prodid;
           const quant = cartItem.quant;
 
-          const response = await axios.get(
-            process.env.REACT_APP_LOOPLOVE_URL + `/api/products?populate=*&filters[id]=${prodid}`
+          const response = await fetchCartDetailsApi.get(`/api/products?populate=*&filters[id]=${prodid}`
           );
           const productData = response.data?.data?.[0];
           console.log('dekh', prodid);
@@ -145,10 +142,9 @@ const Layout = ({ children }) => {
 
 
   return (
-    <div>
+    <div className='layout'>
       {/* Render common layout elements */}
       {children}
-      <CartItem authUserId={authUserId} authUserDetails={authUserDetails}/>
     </div>
   );
 };

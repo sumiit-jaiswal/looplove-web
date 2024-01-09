@@ -11,6 +11,13 @@ import Catpage from "./components/Catpage/Catpage";
 import AppContext from "./utils/context";
 import Profile from "./components/Profile/Profile"
 import Layout from "./layout";
+import CheckoutForm from "./components/checkout/CheckoutForm";
+import Success from "./Payment/Success";
+import Failure from "./Payment/Failure";
+import Order from "./components/Order/Order";
+import PrivacyPolicy from "./components/Policies/PrivacyPolicy/PrivacyPolicy";
+import Terms from "./components/Policies/Terms/Terms";
+import ReturnRefund from "./components/Policies/ReturnRefund/ReturnRefund";
 
 function App() {
     return (
@@ -26,6 +33,13 @@ function App() {
                         <Route path="/about" element={<About />} />
                         <Route path="/categories" element={<Catpage />} />
                         <Route path="/profile" element={<Profile />} />
+                        <Route path="/checkout" element={<CheckoutForm/>}/>
+                        <Route path="/order" element={<Order />} />
+                        <Route path="/success" element={<Success />} />
+                        <Route path="/failure" element={<Failure />} />
+                        <Route path="/Privacy-Policy" element={<PrivacyPolicy />} />
+                        <Route path="/Terms-Conditions" element={<Terms />} />
+                        <Route path="/Return-Refund" element={<ReturnRefund />} />
                     </Routes>
                     <Newsletter />
                     <Footer />

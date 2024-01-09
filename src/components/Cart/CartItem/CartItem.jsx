@@ -1,27 +1,15 @@
 import { MdClose } from "react-icons/md";
-// import prod from "../../../assets/products/earbuds-prod-1.webp";
 import "./CartItem.scss";
-import { useContext, useState } from "react";
+import { useContext } from "react";
 import { Context } from "../../../utils/context";
-import axios from "axios";
 import { useAuth0 } from "@auth0/auth0-react";
 import { uploadCart } from "../../../utils/api";
 
-const CartItem = ({ authUserId, authUserDetails }) => {
+const CartItem = () => {
   const { isAuthenticated } = useAuth0();
   const { sub } = useContext(Context);
   const { cartItems, handleCartProductQuantity, handleRemoveFromCart } =
     useContext(Context);
-  console.log("fffffffffffff", authUserDetails);
-
-  const fetchAndRemoveFromCart = async (item) => {
-    // const cartItems = authUserDetails?.cartitems || [];
-
-    try {
-    } catch (error) {
-      console.error("Error in Promise.all:", error);
-    }
-  };
 
   return (
     <div className="cart-products">
@@ -42,16 +30,14 @@ const CartItem = ({ authUserId, authUserDetails }) => {
               className="close-btn"
               onClick={() => {
                 handleRemoveFromCart(item);
-                fetchAndRemoveFromCart(item);
-                uploadCart(sub,item.id, 0, isAuthenticated);
+                uploadCart(sub, item.id, 0, isAuthenticated);
               }}
             />
             <div className="quantity-buttons">
               <span
                 onClick={() => {
                   handleCartProductQuantity("dec", item);
-                  uploadCart(sub,item.id, -1, isAuthenticated);
-
+                  uploadCart(sub, item.id, -1, isAuthenticated);
                 }}
               >
                 -

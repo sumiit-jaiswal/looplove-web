@@ -20,7 +20,30 @@ export const fetchDataFromApi = async (url) => {
 
 // custom api functions
 
+export const uploadCartApi = axios.create({
+  baseURL: process.env.REACT_APP_LOOPLOVE_URL,
+  headers: {
+    Authorization: "bearer " + process.env.REACT_APP_LOOPLOVE_STRAPI_APP_KEY,
+  },
+});
+
+export const fetchDataApi = axios.create({
+  baseURL: process.env.REACT_APP_LOOPLOVE_URL,
+  headers: {
+    Authorization: "bearer " + process.env.REACT_APP_LOOPLOVE_STRAPI_APP_KEY,
+  },
+});
+
+export const fetchCartDetailsApi = axios.create({
+  baseURL: process.env.REACT_APP_LOOPLOVE_URL,
+  headers: {
+    Authorization: "bearer " + process.env.REACT_APP_LOOPLOVE_STRAPI_APP_KEY,
+  },
+});
+
 export const uploadCart = async (subtoken, prodid, quant, isAuthenticated) => {
+
+  console.log("permission for carrtt additionnn")
     if (isAuthenticated) {
       try {
         console.log("Request payload:", {
@@ -28,8 +51,7 @@ export const uploadCart = async (subtoken, prodid, quant, isAuthenticated) => {
           prodid,
           quant,
         });
-        const response = await axios.post(
-          process.env.REACT_APP_LOOPLOVE_URL + `/api/cartitems/add`,
+        const response = await uploadCartApi.post("/api/cartitems/add",
           {
             subtoken,
             prodid,
@@ -62,6 +84,36 @@ export const uploadCart = async (subtoken, prodid, quant, isAuthenticated) => {
       }
     }
   };
+
+  export const addOrderApi = axios.create({
+    baseURL: process.env.REACT_APP_LOOPLOVE_URL,
+    headers: {
+      Authorization: "bearer " + process.env.REACT_APP_LOOPLOVE_STRAPI_APP_KEY,
+    },
+  });
+
+  export const updateOrderApi = axios.create({
+    baseURL: process.env.REACT_APP_LOOPLOVE_URL,
+    headers: {
+      Authorization: "bearer " + process.env.REACT_APP_LOOPLOVE_STRAPI_APP_KEY,
+    },
+  });
+
+ export const addOrder = async (subtoken,products, amount) => {
+
+    try {
+          const response = await addOrderApi.post( "/api/orders/pre", {
+
+            subtoken,
+            products,
+            amount,
+        });
+        console.log("resss",response);
+        
+    } catch (err) {
+        console.log(err);
+    }
+};
 
 
 

@@ -1,4 +1,6 @@
 import React from "react";
+import { useNavigate } from "react-router-dom";
+
 import {
 //   FaFacebookF,
 //   FaTwitter,
@@ -7,6 +9,8 @@ import {
 } from "react-icons/fa";
 import "./Newsletter.scss";
 const Newsletter = () => {
+  const navigate= useNavigate();
+
   return (
     <div className="newsletter-section">
       <div className="newsletter-content">
@@ -16,7 +20,7 @@ const Newsletter = () => {
           <input type="text" placeholder="Email Address" />
           <button>Subscribe</button>
         </div>
-        <div className="text">
+        <div className="text" onClick={()=>navigate(`/Privacy-Policy`)}>
           Will be used in accordance with our Privace Policy
         </div>
         {/* <div className="social-icons">

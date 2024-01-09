@@ -1,0 +1,46 @@
+// PaymentFailure.scss
+
+.payment-failure {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+  
+    @media (max-width: 768px) {
+      padding: 0 20px; /* Adjust spacing for smaller screens */
+    }
+  }
+  
+  .payment-failure-content {
+    text-align: center;
+    max-width: 600px; /* Limit the width of the content for better readability */
+  
+    @media (max-width: 768px) {
+      width: 100%; /* Full width on smaller screens */
+    }
+  }
+  
+  .payment-failure-message {
+    margin-bottom: 20px;
+  
+    h2 {
+      font-size: 24px;
+      color: #dc3545; /* Red color for failure */
+    }
+  
+    p {
+      font-size: 16px;
+      color: #333;
+    }
+  }
+  
+  .back-link {
+    color: #007bff;
+    text-decoration: underline;
+    cursor: pointer;
+  
+    &:hover {
+      color: #0056b3;
+    }
+  }
+  

@@ -13,33 +13,40 @@ const Footer = () => {
           <div className="title">Pages</div>
           <span className="text" onClick={()=>navigate(`/`)}>Home</span>
           <span className="text" onClick={()=>navigate(`/about`)}>About</span>
-          <span className="text">Privacy Policy</span>
-          <span className="text">Terms & Conditions</span>
-          <span className="text">Contact Us</span>
+          <span className="text" onClick={()=>navigate(`/Privacy-Policy`)}>Privacy Policy</span>
+          <span className="text" onClick={()=>navigate(`/Terms-Conditions`)}>Terms & Conditions</span>
+          <span className="text" onClick={()=>navigate(`/Return-Refund`)}>Returns & Refunds</span>
+          {/* <span className="text">Contact Us</span> */}
         </div>
         
         <div className="col">
-          <div className="title">Categories</div>
-          <span className="text">Flowers</span>
-          <span className="text">Bouquet</span>
-          <span className="text">Keychains</span>
-          <span className="text">Charms</span>
-          <span className="text">Head Accessories</span>
+          <div className="title" onClick={()=>navigate(`/categories`)}>Categories</div>
+          <span className="text" onClick={()=>navigate(`/category/1`)}>Flowers</span>
+          <span className="text" onClick={()=>navigate(`/`)}>Bouquet</span>
+          <span className="text" onClick={()=>navigate(`/`)}>Keychains</span>
+          <span className="text" onClick={()=>navigate(`/`)}>Charms</span>
+          <span className="text" onClick={()=>navigate(`/`)}>Hair Accessories</span>
         </div>
 
+        
         <div className="col">
           <div className="title">Contact</div>
-          {/* <div className="c-item">
-            <FaLocationArrow />
-            <div className="text">
-              
-            </div>
-          </div> */}
-          
           <div className="c-item">
             <FaEnvelope />
             <div className="text">Email: care@looplove.in</div>
+            </div>
+          <div className="c-item">
+            <FaMobileAlt />
+            <div className="text">Whatsapp: +91: 9599305469</div>
           </div>
+          <div className="c-item">
+            <FaLocationArrow />
+            <div className="text">
+            Delhi Technological University, Shahbad Dairy, Delhi 110042
+            </div>
+          </div>
+          
+          
         </div>
         <div className="col">
           <div className="title">About</div>

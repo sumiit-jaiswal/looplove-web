@@ -1,0 +1,40 @@
+.RR-container {
+    max-width: 960px;
+    margin: 0 auto;
+    padding: 2rem;
+    font-family: sans-serif;
+  
+    @media (max-width: 768px) {
+      padding: 1rem;
+    }
+  }
+  
+  .RR-title {
+    text-align: center;
+    margin-bottom: 2rem;
+  }
+  
+  .RR-section {
+    margin-bottom: 2rem;
+  
+    h2 {
+      font-size: 1.5rem;
+      margin-top: 2rem;
+    }
+  
+    p {
+      margin-bottom: 1rem;
+    }
+  
+    // Styles for specific sections, links, etc. as needed
+    &.welcome {
+      text-align: center;
+    }
+    &.contact {
+      text-align: center;
+    }
+    a {
+      color: #663399;
+    }
+  }
+  
