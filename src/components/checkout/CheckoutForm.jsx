@@ -1,9 +1,8 @@
 import React, { useState, useContext } from "react";
-import axios from "axios";
 import "./CheckoutForm.scss";
 import { Context } from "../../utils/context";
 import { useAuth0 } from "@auth0/auth0-react";
-import { fetchDataApi , updateOrderApi} from "../../utils/api";
+import { fetchDataApi, updateOrderApi } from "../../utils/api";
 const CheckoutForm = () => {
   const { cartItems, cartSubTotal } = useContext(Context);
   const [name, setName] = useState("");
@@ -17,41 +16,37 @@ const CheckoutForm = () => {
   const [loading2, setLoading2] = useState(false);
   const { sub } = useContext(Context);
   const [authUserId, setAuthUserId] = useState(null);
-  const {isAuthenticated,loginWithRedirect}=useAuth0();
+  const { isAuthenticated, loginWithRedirect } = useAuth0();
 
-console.log("authuser mil gya",authUserId);
-  const data = {
-    name: "sumitjais",
-    amount: 1,
-    number: "9599399438",
-    MUID: "MUID123",
-    transactionId: "MT7850590068188104",
-  };
+  console.log("authuser mil gya", authUserId);
+  // const data = {
+  //   name: "sumitjais",
+  //   amount: 1,
+  //   number: "9599399438",
+  //   MUID: "MUID123",
+  //   transactionId: "MT7850590068188104",
+  // };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
 
     try {
       // Fetch authUserId and wait for the operation to complete
-      if(isAuthenticated){
+      if (isAuthenticated) {
         await fetchData(sub);
-  
-      // After fetching authUserId, proceed with the rest of the logic
-      loading();
-      }
-      else{
+
+        // After fetching authUserId, proceed with the rest of the logic
+        loading();
+      } else {
         loginWithRedirect();
       }
-      
     } catch (error) {
-      console.error('Error during form submission: ', error);
+      console.error("Error during form submission: ", error);
     }
-    
+
     // Add more functions as needed
   };
   const loading = () => {
-  
-
     // Add your form submission logic here
     // For example, you can make an API call or perform any other actions
 
@@ -72,85 +67,73 @@ console.log("authuser mil gya",authUserId);
     }, 2000);
   };
 
-  console.log("subtoken checkout",sub);
+  console.log("subtoken checkout", sub);
   const fetchData = async (subtoken) => {
     try {
-      console.log('Fetching data for subtoken:', subtoken);
-      const response = await fetchDataApi.post( `/api/authusers/findauthser`,
-        {
-          subtoken,
-        }
-      );
-      
+      console.log("Fetching data for subtoken:", subtoken);
+      const response = await fetchDataApi.post(`/api/authusers/findauthser`, {
+        subtoken,
+      });
+
       const receivedAuthUserId = response.data.authUserId;
-      console.log('Received authUserId:', receivedAuthUserId);
+      console.log("Received authUserId:", receivedAuthUserId);
       setAuthUserId(receivedAuthUserId);
       updateOrder(receivedAuthUserId);
-
-      
-
     } catch (error) {
-      console.error('Error fetching authuser: react', error);
+      console.error("Error fetching authuser: react", error);
     }
   };
 
-
   const updateOrder = async (authUserId) => {
     // Function 2 logic
-    console.log('Executing submitFunction2');
-    console.log("name",name);
-    console.log("subtoken checkouuuuuuuuut",sub);
-    console.log(authUserId,"authidddddd mil gya")
+    console.log("Executing submitFunction2");
+    console.log("name", name);
+    console.log("subtoken checkouuuuuuuuut", sub);
+    console.log(authUserId, "authidddddd mil gya");
     try {
-         const response = await updateOrderApi.post(`/api/orders/update`,
-        {
-          authUserId,
-          name,
-          email,
-          phoneNumber,
-          addressLine1,
-          addressLine2,
-          city,
-          state,
-          pincode,
-        }
-      );
-        console.log("response of  updating order",response);
-    
+      const response = await updateOrderApi.post(`/api/orders/update`, {
+        authUserId,
+        name,
+        email,
+        phoneNumber,
+        addressLine1,
+        addressLine2,
+        city,
+        state,
+        pincode,
+      });
+      console.log("response of  updating order", response);
     } catch (error) {
       console.error("Error processing update order react: ", error);
-    } 
-
-
+    }
   };
 
-  const handlePayment = async (e) => {
-    try {
-      setLoading2(true);
+  // const handlePayment = async (e) => {
+  //   try {
+  //     setLoading2(true);
 
-      const response = await axios.post(
-        process.env.REACT_APP_LOOPLOVE_URL + `/api/orders/payment`,
-        {
-          ...data,
-        }
-      );
+  //     const response = await axios.post(
+  //       process.env.REACT_APP_LOOPLOVE_URL + `/api/orders/payment`,
+  //       {
+  //         ...data,
+  //       }
+  //     );
 
-      const redirectUrl = response.data;
-      window.location.href = redirectUrl;
-    } catch (error) {
-      console.error("Error processing payment: ", error);
-    } 
-  };
+  //     const redirectUrl = response.data;
+  //     window.location.href = redirectUrl;
+  //   } catch (error) {
+  //     console.error("Error processing payment: ", error);
+  //   }
+  // };
 
   const handlePincodeChange = (e) => {
     const inputPincode = e.target.value;
 
     // Allow only digits and limit to 6 characters
-    const sanitizedPincode = inputPincode.replace(/\D/g, '').slice(0, 6);
+    const sanitizedPincode = inputPincode.replace(/\D/g, "").slice(0, 6);
 
     setPincode(sanitizedPincode);
   };
-
 
   return (
     <div className="checkout-form">
@@ -160,6 +143,7 @@ console.log("authuser mil gya",authUserId);
           {cartItems.map((item) => (
             <div key={item.id} className="product-item">
               <img
+                alt="product"
                 src={
                   process.env.REACT_APP_LOOPLOVE_URL +
                   item?.attributes?.img?.data?.[0]?.attributes?.url
@@ -169,7 +153,9 @@ console.log("authuser mil gya",authUserId);
                 <h3>{item.attributes.title}</h3>
                 <p>Quantity: {item.attributes.quantity}</p>
               </div>
-              <p className="end">₹{item.attributes.price * item.attributes.quantity}</p>
+              <p className="end">
+                ₹{item.attributes.price * item.attributes.quantity}
+              </p>
             </div>
           ))}
           <div className="subtotal">
@@ -258,7 +244,10 @@ console.log("authuser mil gya",authUserId);
             <button type="submit" disabled={loading2}>
               {loading2 ? "Processing..." : "We are on testing mode"}
             </button>
-            <p>we are not accepting orders for now as we are on testing mode right now.</p>
+            <p>
+              we are not accepting orders for now as we are on testing mode
+              right now.
+            </p>
             <p>--------</p>
             <p>we will be back soon</p>
           </form>

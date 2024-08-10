@@ -1,8 +1,7 @@
 import { useEffect, useState, useContext } from "react";
-import { useNavigate,useLocation  } from "react-router-dom";
+import { useNavigate, useLocation } from "react-router-dom";
 import { TbSearch } from "react-icons/tb";
 import { CgShoppingCart } from "react-icons/cg";
-import { AiOutlineHeart } from "react-icons/ai";
 import "./Header.scss";
 import Search from "./Search/Search";
 import { Context } from "../../utils/context";
@@ -33,18 +32,14 @@ const Header = () => {
     window.addEventListener("scroll", handlescroll);
   }, []);
 
-
   // auth 0 functions
 
-  const { loginWithRedirect, isAuthenticated, user } = useAuth0();
+  const { isAuthenticated, user } = useAuth0();
 
-  const isImg =() => {
-
-    
+  const isImg = () => {
     return user.picture;
-
   };
-  console.log("information",user?.picture,user?.name,user?.given_name);
+  console.log("information", user?.picture, user?.name, user?.given_name);
 
   return (
     <>
@@ -67,18 +62,26 @@ const Header = () => {
             {/* <span className="wishlist-icon" >
             <AiOutlineHeart /><span>4</span>
             </span> */}
-            {!isCheckoutPage && <span className="cart-icon" onClick={() => setShowCart(true)}>
-              {<CgShoppingCart />}
-              {!!cartCount && <span>{cartCount}</span>}
-            </span>}
-            {!isAuthenticated && <div className="loginout login heart"  onClick={() => loginWithRedirect()}>
+            {!isCheckoutPage && (
+              <span className="cart-icon" onClick={() => setShowCart(true)}>
+                {<CgShoppingCart />}
+                {!!cartCount && <span>{cartCount}</span>}
+              </span>
+            )}
+            {/* {!isAuthenticated && <div className="loginout login heart"  onClick={() => loginWithRedirect()}>
               <span>Login</span>
-            </div>}
+            </div>} */}
 
-            {isAuthenticated && <div className="loginout profile"  onClick={() => navigate("/profile")}>
-            {isImg && <img src={user.picture} alt="" className="profile-picture" />}
-            </div>}
-
+            {isAuthenticated && (
+              <div
+                className="loginout profile"
+                onClick={() => navigate("/profile")}
+              >
+                {isImg && (
+                  <img src={user.picture} alt="" className="profile-picture" />
+                )}
+              </div>
+            )}
           </div>
         </div>
       </header>

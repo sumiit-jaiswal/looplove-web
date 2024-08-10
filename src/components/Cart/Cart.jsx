@@ -6,9 +6,8 @@ import CartItem from "./CartItem/CartItem";
 import { useNavigate } from "react-router-dom";
 import { useContext } from "react";
 import { Context } from "../../utils/context";
-import {addOrder} from "../../utils/api";
+import { addOrder } from "../../utils/api";
 import { useAuth0 } from "@auth0/auth0-react";
-
 
 const Cart = ({ setShowCart }) => {
   const { sub } = useContext(Context);
@@ -16,13 +15,12 @@ const Cart = ({ setShowCart }) => {
   const navigate = useNavigate();
   const { loginWithRedirect, isAuthenticated } = useAuth0();
 
-
-  const newProducts = cartItems.map(item => {
+  const newProducts = cartItems.map((item) => {
     const { id, attributes } = item;
     const { title, quantity } = attributes;
     return { id, title, quantity };
   });
-  
+
   return (
     <div className="cart-panel">
       <div className="opac-layer" onClick={() => setShowCart(false)}></div>

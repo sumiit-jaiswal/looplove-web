@@ -1,15 +1,15 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
 
-import {
-//   FaFacebookF,
-//   FaTwitter,
-  FaInstagram,
-  FaLinkedinIn,
-} from "react-icons/fa";
+// import {
+//   //   FaFacebookF,
+//   //   FaTwitter,
+//   FaInstagram,
+//   FaLinkedinIn,
+// } from "react-icons/fa";
 import "./Newsletter.scss";
 const Newsletter = () => {
-  const navigate= useNavigate();
+  const navigate = useNavigate();
 
   return (
     <div className="newsletter-section">
@@ -20,7 +20,7 @@ const Newsletter = () => {
           <input type="text" placeholder="Email Address" />
           <button>Subscribe</button>
         </div>
-        <div className="text" onClick={()=>navigate(`/Privacy-Policy`)}>
+        <div className="text" onClick={() => navigate(`/Privacy-Policy`)}>
           Will be used in accordance with our Privace Policy
         </div>
         {/* <div className="social-icons">

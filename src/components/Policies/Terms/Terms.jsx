@@ -131,8 +131,7 @@ const Terms = () => {
         <h2 className="contact-section-title">11. Contact Us</h2>
         <p>
           If you have any questions about these Terms & Conditions, please
-          contact us at{" "}
-          <a href="mailto:care@looplove.in">care@looplove.in</a>.
+          contact us at <a href="mailto:care@looplove.in">care@looplove.in</a>.
         </p>
       </section>
     </div>

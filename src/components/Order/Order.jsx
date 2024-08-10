@@ -1,11 +1,11 @@
 // Order.jsx
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import "./Order.scss"; // Create this file for styling if needed
 import { useNavigate } from "react-router-dom";
 
 const Order = () => {
   const navigate = useNavigate();
-  const [orders, setOrders] = useState([]);
+  const [orders] = useState([]);
 
   // Assume you have an API endpoint or data source for fetching orders
   // useEffect(() => {
@@ -40,7 +40,9 @@ const Order = () => {
       {orders.length === 0 ? (
         <div className="no-order">
           <p className="heading">No orders available</p>
-          <p className="back-link" onClick={() => navigate("/")}>continue shopping</p>
+          <p className="back-link" onClick={() => navigate("/")}>
+            continue shopping
+          </p>
         </div>
       ) : (
         <ul className="orders-list">

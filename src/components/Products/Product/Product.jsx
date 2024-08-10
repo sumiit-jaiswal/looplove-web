@@ -9,7 +9,10 @@ const Product = ({ id, data }) => {
     <div className="product-card" onClick={() => navigate("/product/" + id)}>
       <div className="thumbnail">
         <img
-          src={process.env.REACT_APP_LOOPLOVE_URL + data?.img?.data?.[0]?.attributes?.url}
+          src={
+            process.env.REACT_APP_LOOPLOVE_URL +
+            data?.img?.data?.[0]?.attributes?.url
+          }
           alt=""
         />
       </div>

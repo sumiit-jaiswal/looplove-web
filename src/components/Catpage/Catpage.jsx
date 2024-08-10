@@ -1,6 +1,6 @@
 import useFetch from "../../hooks/useFetch";
 import Category from "../Home/Category/Category";
-import "./Catpage.scss"
+import "./Catpage.scss";
 
 const Catpage = () => {
   const { data } = useFetch(`/api/categories?populate=*`);

@@ -39,14 +39,14 @@ const AppContext = ({ children }) => {
     setCartItems((prevItems) => {
       let items = [...prevItems];
       let index = items?.findIndex((p) => p.id === product?.id);
-  
+
       if (index !== -1) {
         items[index].attributes.quantity += quantity;
       } else {
         product.attributes.quantity = quantity;
         items = [...items, product];
       }
-  
+
       return items;
     });
   };
@@ -76,7 +76,7 @@ const AppContext = ({ children }) => {
         const idToken = await getIdTokenClaims();
         const subValue = idToken.sub;
         setSub(subValue);
-        
+
         // Now you can use the 'sub' to make requests to your Strapi backend
       }
     };
@@ -84,9 +84,9 @@ const AppContext = ({ children }) => {
     fetchSubFromAuth0();
   }, [user, getIdTokenClaims]);
 
-  
 
-  
+
+
 
   return (
     <Context.Provider

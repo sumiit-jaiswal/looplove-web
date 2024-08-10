@@ -41,8 +41,8 @@ const SingleProduct = () => {
   const carouselimg = product?.img;
   const handleShare = () => {
     const shareData = {
-      title: product.title,
-      text: `Check out this product: ${product.title}`,
+      title: product?.title,
+      text: `Check out this product: ${product?.title}`,
       url: window.location.href,
     };
 
@@ -55,10 +55,6 @@ const SingleProduct = () => {
       console.error("Web Share API not supported on this browser");
     }
   };
-
-  
-
-  
 
   return (
     <>

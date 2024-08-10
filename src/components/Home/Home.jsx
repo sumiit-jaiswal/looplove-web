@@ -1,5 +1,5 @@
 // Home.js
-import React, { useEffect, useContext,useState } from "react";
+import React, { useEffect, useContext } from "react";
 import "./Home.scss";
 import Banner from "./Banner/Banner";
 import Category from "./Category/Category";
@@ -8,45 +8,42 @@ import { fetchDataFromApi } from "../../utils/api";
 import { Context } from "../../utils/context";
 
 const Home = () => {
-
-
- 
-  const { categories, setCategories, products, setProducts, banners, setBanners} = useContext(Context);
-
-
-
+  const {
+    categories,
+    setCategories,
+    products,
+    setProducts,
+    banners,
+    setBanners,
+  } = useContext(Context);
 
   useEffect(() => {
+    const getCategories = () => {
+      fetchDataFromApi("/api/categories?populate=*").then((res) => {
+        console.log(res);
+        setCategories(res);
+      });
+    };
+
+    const getProducts = () => {
+      fetchDataFromApi("/api/products?populate=*").then((res) => {
+        console.log(res);
+        setProducts(res);
+      });
+    };
+
+    const getBanners = () => {
+      fetchDataFromApi("/api/banners?populate=*").then((res) => {
+        console.log(res);
+        setBanners(res);
+      });
+    };
+
     getCategories();
     getProducts();
     getBanners();
-  }, []);
+  }, [setCategories, setProducts, setBanners]);
 
-  const getCategories = () => {
-    fetchDataFromApi("/api/categories?populate=*").then((res) => {
-      console.log(res);
-      setCategories(res);
-    });
-  };
-
-  const getProducts = () => {
-    fetchDataFromApi("/api/products?populate=*").then((res) => {
-      console.log(res);
-      setProducts(res);
-    });
-  };
-
-  const getBanners = () => {
-    fetchDataFromApi("/api/banners?populate=*").then((res) => {
-      console.log(res);
-      setBanners(res);
-    });
-  };
-
-  
-
-  
-  
   return (
     <div>
       <Banner banners={banners} />

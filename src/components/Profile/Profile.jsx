@@ -29,7 +29,7 @@ const Profile = () => {
 
         <div className="buttons">
           {/* <span>Edit Profile</span> */}
-          <span onClick={()=> navigate("/order")}>Track Order</span>
+          <span onClick={() => navigate("/order")}>Track Order</span>
           <span
             onClick={() => (window.location.href = "mailto:Care@looplove.in")}
           >

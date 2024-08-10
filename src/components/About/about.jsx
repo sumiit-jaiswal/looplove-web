@@ -1,7 +1,6 @@
-import React from 'react';
-import './about.scss';
+import React from "react";
+import "./about.scss";
 import snehaImage from "../../assets/sneha-photo.jpg";
-import sumitImage from "../../assets/sumit-photo.jpg";
 
 const About = () => {
   return (
@@ -9,19 +8,22 @@ const About = () => {
       <div className="section">
         <div className="section-image">
           <img src={snehaImage} alt="Sneha Bist" />
-          <span className="img-data">Sneha Singh (CEO & Co-founder of LoopLove)</span>
+          <span className="img-data">
+            Sneha Singh (CEO & Co-founder of LoopLove)
+          </span>
         </div>
         <div className="section-content">
           <h2>About Sneha Bist</h2>
           <p>
-            Sneha Bist, the co-founder of LoopLove, is a passionate advocate for women empowerment.
-            With a deep commitment to creating a positive impact, she believes in fostering an
-            inclusive environment where women can thrive and achieve their full potential.
+            Sneha Bist, the co-founder of LoopLove, is a passionate advocate for
+            women empowerment. With a deep commitment to creating a positive
+            impact, she believes in fostering an inclusive environment where
+            women can thrive and achieve their full potential.
           </p>
         </div>
       </div>
-      
-      <div className="section">
+
+      {/* <div className="section">
         <div className="section-image">
           <img src={sumitImage} alt="Sumit Jaiswal" />
           <span className="img-data">Sumit Jaiswal (Co-founder of LoopLove)</span>
@@ -34,7 +36,7 @@ const About = () => {
             approach, Sumit ensures the smooth functioning of the company's finances and operations.
           </p>
         </div>
-      </div>
+      </div> */}
     </div>
   );
 };
